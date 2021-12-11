@@ -42,6 +42,7 @@
 >};
 >
 ---
+
 #### class Customer
 >{
 >    
@@ -78,6 +79,7 @@
 >};
 >
 ---
+
 #### class TipBox
 >{
 >
@@ -100,6 +102,7 @@
 >};
 >
 ---
+
 #### Description of the classes
 - For the Table class, it represents a table with a certain number of dishes, so it needs to contain the maximum number of dishes that can hold, the current number of dishes, and the content variables of the dishes (randomly generated during construction).
 - For the Customer class, it represents a customer who has a demand for dishes, so it needs to contain the maximum number of wanted, the current number of wanted, and the variable of the wanted content (randomly generated during construction).

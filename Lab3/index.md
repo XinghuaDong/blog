@@ -30,6 +30,7 @@ corresponding name
 >};
 >
 ---
+
 #### class Customer
 >{
 >    
@@ -58,6 +59,7 @@ corresponding name
 >};
 >
 ---
+
 #### class TipBox
 >{
 >
@@ -84,6 +86,7 @@ corresponding name
 >};
 >
 ---
+
 #### class Order
 >{
 >
@@ -113,6 +116,7 @@ corresponding name
 >- `mutable std::mutex m_orderMutex`; //lock
 >}
 ---
+
 #### Description of the application design and classes
 - The function of this application is to simulate the process of customer ordering, picking up and tipping. The loop ends when the customer's wanted dish is consumed. The program loops several times and prints the time spent in each loop, the number of Customers and the number of dish passed at the end of all loops.
 - Since multiple Customers are operating at the same time, multiple threads are required for concurrency. When more than one Customer is adding/fetching or paying tips to the table at the same time, in order to prevent the data from being manipulated at the same time, it is necessary to use a lock to make the corresponding variables only be manipulated by the current Customer thread before any one of them is manipulated, and then release the lock after the operation is finished so that other After the operation, the lock is released so that other Customers can operate.

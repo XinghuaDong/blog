@@ -35,6 +35,7 @@
 >    - perform logical processing.
 > 
 ---
+
 #### client.js
 >- `const url`
 >    - Record the address of the connection
@@ -74,6 +75,7 @@
 >    - When the order list is not empty, loop to generate a delivery to the corresponding customer
 > 
 ---
+
 #### server.js
 >- `const WebSocket = require('ws')`
 >- `const wss = new WebSocket.Server({...})`
@@ -92,6 +94,7 @@
 >    - send heartbeat messages cyclically to determine if the client is active
 > 
 ---
+
 #### Description of the application design and classes
 - The main function of the application we designed is to simulate the whole process of ordering and delivering food to customers. The function of the app on the web side is to receive orders from customers and deliver the dishes to the specified customers, and the current customer ends the disconnection when the customer's desired dish is finished. When the page is open, the application will keep running, and the server will broadcast and web html update information when the customer enters, leaves, and receives the dishes.
 - When multiple customer pages are opened, multiple customer connections will be generated. If the web side (not the server) is open, the customer will order immediately after the connection is successful, and if the web side is not open, the customer will order after clicking the "open" button after the web side is connected.
