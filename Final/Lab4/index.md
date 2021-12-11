@@ -1,0 +1,182 @@
+## Welcome to GitHub Pages (Lab4)
+
+### ***Back to [Home](https://xinghuadong.github.io/blog.github.io/)***
+
+### ***[Download](https://github.com/Yvonhu/repo/tree/main/Lab4)***
+
+### Document API for library
+
+#### customer.cpp
+>- `std::string cust_name`
+>    - Records the name of the current customer, used to distinguish between different customers.
+>- `std::vector<int> wanted, received`
+>    - Record the desired and received wishes of the current customer.
+>- `std::vector<int>::iterator it`
+>    - Iterator for vector
+>- `std::mutex mtx`
+>    - Mutual exclusion lock to prevent conflicts when multiple messages are received at the same time
+>- `EMSCRIPTEN_WEBSOCKET_T socket`
+>    - Socket operation handle
+>- `bool heartflag = true`
+>    - Stop the heartbeat response when the active disconnection is unsuccessful, allowing the server to
+>    - initiate the disconnection
+>- `bool orderflag = false`
+>    - Used to record whether the order has been made.
+>- `std::string vector2string(std::vector<int> dishes, std::string split)`
+>    - Return the dishes stored in the vector as a split string
+>- `EM_BOOL WebSocketOpen(int eventType, const EmscriptenWebSocketOpenEvent *e, void *userData)`
+>    - Callback function after open of the socket, used to handle the logic after successful open
+>- `EM_BOOL WebSocketClose(int eventType, const EmscriptenWebSocketCloseEvent *e, void *userData)`
+>    - Callback function for the close of the socket.
+>- `EM_BOOL WebSocketError(int eventType, const EmscriptenWebSocketErrorEvent *e, void *userData)`
+>    - Callback function when an error occurs in the socket.
+>- `EM_BOOL WebSocketMessage(int eventType, const EmscriptenWebSocketMessageEvent *e, void *userData)`
+>    - Callback function for the socket to receive a message, to determine the content of the message - and
+>    - perform logical processing.
+---
+#### client.js
+>- `const url`
+>    - Record the address of the connection
+>- `socket`
+>    - socket handle
+>- `order_list = {}`
+>    - Record the name of the customer who has already done the order
+>- `doing_list = {}`
+>    - Record the name of the customer whose delivery is ready and the name of the corresponding >customer
+>- `delivered_list = {}`
+>    - Record the names of the customers who have delivered and the corresponding dish
+>- `delivery_tasks = []`
+>    - Record the messages that are ready for delivery and the names of the corresponding customers
+>- `var customer_count = 0`
+>    - Record the number of customers that have been connected
+>- `function getCurrentTime()`
+>    - Get the current time
+>- `function receiverdiv(msg)`
+>    - Compose the received content into div blocks for display on the HTML page
+>- `function senderdiv(msg)`
+>    - Compose the sent content into a div block to be displayed on the HTML page
+>- `function delivery_dish(msg)`
+>    - Constructs a div block with the contents of the delivery for display on the HTML page.
+>- `function jsontemplate(id, type, name, msg)`
+>    - Template for composing JSON strings
+>- `socket.addEventListener('open', msg => {...})`
+>    - The socket's open event listener, used to handle the logic after the socket is >successfully     - opened
+>- `socket.addEventListener('message', e => {...})`
+>    - socket's message event listener, used to handle logic after receiving a message
+>- `socket.addEventListener('close', e => {...})`
+>    - socket's close event listener, used to handle the logic after the socket is closed
+>- `socket.addEventListener('error', e => {...})`
+>    - The socket's error event listener
+>- `function delivery()`
+>    - Loop through delivery messages when the socket is open and send them out
+>- `worker`
+>    - When the order list is not empty, loop to generate a delivery to the corresponding customer
+---
+#### server.js
+>- `const WebSocket = require('ws')`
+>- `const wss = new WebSocket.Server({...})`
+>- `const connects = {}`
+>- `var table_flag = 0`
+>- `broadcast = function (ws, msg)`
+>- `ws.on('connection', (ws, req) => {...})`
+>    -  used to handle the logic after the client connects to the server
+>- `ws.on('message', message => {...}) `
+>  - logic processing after receiving a message
+>- `ws.on('close', () => {...}) `
+>  - Socket closure
+>- `ws.isAlive = true; `
+>    - record if the client is active
+>- `pulse`
+>    - send heartbeat messages cyclically to determine if the client is active
+---
+#### Description of the application design and classes
+- The main function of the application we designed is to simulate the whole process of ordering and delivering food to customers. The function of the app on the web side is to receive orders from customers and deliver the dishes to the specified customers, and the current customer ends the disconnection when the customer's desired dish is finished. When the page is open, the application will keep running, and the server will broadcast and web html update information when the customer enters, leaves, and receives the dishes.
+- When multiple customer pages are opened, multiple customer connections will be generated. If the web side (not the server) is open, the customer will order immediately after the connection is successful, and if the web side is not open, the customer will order after clicking the "open" button after the web side is connected.
+  - For customer, since the customer may recall more than one delivery message, in order to prevent the recorded data from being manipulated at the same time, it is necessary to use a lock so that the corresponding variables cannot be used until the processing of the current message is finished, and then release the lock after the operation is completed.
+  - For client.js, it represents a restaurant and is used to handle the order and delivery operations of the corresponding customer, so it needs to store the corresponding dishes of the customer, the dishes waiting for delivery, and the dishes already delivered, in order to distinguish the status of different customers' dishes and the status of the dishes.
+  - For server.js, it is responsible for message forwarding, processing, and the management of clients connections. It needs to record the connected clients and the corresponding names for broadcasting when the clients join or disconnect.
+
+### UML
+
+| Customer.cpp                                                                                        | Client.js                                        | Server.js                                  |
+| --------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------ |
+| `std::string cust_name;`                                                                            | `const url`                                      | `const WebSocket = require('ws');`         |
+| `std::vector<int> wanted, received;`                                                                | `socket`                                         | `const wss = new WebSocket.Server({...});` |
+| `std::vector<int>::iterator it;`                                                                    | `order_list = {};`                               | `const connects = {};`                     |
+| `std::mutex mtx;`                                                                                   | `doing_list = {};`                               | `var table_flag = 0;`                      |
+| `bool heartflag = true;`                                                                            | `delivered_list = {};`                           | `broadcast = function (ws, msg)`           |
+| `bool orderflag = false;`                                                                           | `delivery_tasks = [];`                           | `ws.on('message', message => {...})`       |
+| `std::string vector2string(std::vector<int> dishes, std::string split)`                             | `var customer_count = 0;`                        | `ws.on('close', () => {...})`              |
+| `EM_BOOL WebSocketOpen(int eventType, const EmscriptenWebSocketOpenEvent *e, void *userData)`       | `function getCurrentTime()`                      | `ws.on('connection', (ws, req) => {...})`  |
+| `EM_BOOL WebSocketClose(int eventType, const EmscriptenWebSocketCloseEvent *e, void *userData)`     | `function receiverdiv(msg)`                      | `ws.isAlive = true;`                       |
+| `EM_BOOL WebSocketError(int eventType, const EmscriptenWebSocketErrorEvent *e, void *userData)`     | `function senderdiv(msg)`                        |                                            |
+| `EM_BOOL WebSocketMessage(int eventType, const EmscriptenWebSocketMessageEvent *e, void *userData)` | `function delivery_dish(msg)`                    |                                            |
+|                                                                                                     | `function jsontemplate(id, type, name, msg)`     |                                            |
+|                                                                                                     | `socket.addEventListener('open', msg => {...})`  |                                            |
+|                                                                                                     | `socket.addEventListener('message', e => {...})` |                                            |
+|                                                                                                     | `socket.addEventListener('close', e => {...})`   |                                            |
+|                                                                                                     | `socket.addEventListener('error', e => {...})`   |                                            |
+|                                                                                                     | `function delivery()`                            |                                            |
+|                                                                                                     | `worker`                                         |                                            |
+
+
+### Compare the performance of concurrent stress tests and the stability of long-time communication between the demo app and the test app.
+#### The demo application
+- The demo app client was able to run on the browser side with calls to the Emscripten c++ WebSockets API.
+- The demo app can use clients as a way to process work, and could also be used as way to submit work .
+- The demo app could coordinate work being processed, and these points will be described and demonstrated in detail below.
+
+> The performance of concurrent stress test Concurrent stress testing helps us to evaluate the maximum number of client connections that the app's server can host and its ability to handle huge volumes of messages simultaneously. This allows us to find more potential problems before the actual release of the app, such as
+1. the maximum number of client connections that the server can host, so that we can scale the server in advance during peak traffic periods on weekends or holidays to avoid temporary server overload crashes.
+2. Once the maximum number of messages that the server can respond to simultaneously is determined, the total number of messages that can be processed and the average time consumed at each time of the day can be evaluated, which will provide a reference for the reservation service later.
+3. If we do not stress test, the server is likely to crash during a period of sudden huge increase in traffic like Christmas, and then face the embarrassing scenario of everyone being on vacation and needing to temporarily mobilize staff to repair the server, thus causing huge financial losses.
+So the performance of the stress test was chosen as a comparison standard, in line with what we needed when we were working on the demo app design. 
+
+***(Note: the following screenshot server due to debugging needs, part of the log will be repeatedly printed)***
+
+1. The maximum number of client connections that the server can host If the server has been started, the index.html page has been opened and the connection to the server is successful, open as many customer pages as possible and observe the maximum number of customers the server can host:
+
+![Screenshot.1](Pic/lab4-1.jpg "Screenshot.1")
+Screenshot.1
+
+2. Maximum number of messages the server can reply to simultaneously If the server has been started and the index.html page has been opened and connected to the server successfully, open as many customer pages as possible, click the open button on the index page, let the connected customers order at the same time, and observe whether the index.html can still receive orders and deliver them normally.
+>The following three screenshots show:
+- the start of concurrent orders.
+- delivery information.
+- customer page information respectively.
+
+![Screenshot.2](Pic/lab4-2.jpg "Screenshot.2")
+Screenshot.2
+
+![Screenshot.3](Pic/lab4-3.jpg "Screenshot.3")
+Screenshot.3
+
+![Screenshot.4](Pic/lab4-4.jpg "Screenshot.4")
+Screenshot.4
+
+> Customer's sustainable connection test.
+- This is a localized individuality test that can be performed several times to evaluate the average stability of the client's connection to the server. The more stable the app is, the less likely it is to be suddenly disconnected or suffer crushes, and the better the customer experience will be, resulting in more ongoing customers and potential growth markets.
+
+3. Customer's sustainable connection test is done when the server has been started, the index.html page has been opened and the connection to the server is successful, the customer page is opened, the customer is connected, and only the heartbeat messages are sent and received. whether the customer is still connected. In our final test, the customer remained connected to the server for more than 60 hours, and the stability could meet the demand.
+
+![Screenshot.5](Pic/lab4-5.jpg "Screenshot.5")
+Screenshot.5
+
+#### Native app.
+- I wrote a local Customer.cpp with similar functionality to the demo app for testing, and all the features needed for comparison were already in place. But unfortunately, I were unable to compile it and the problem occurred as shown in the screenshot below. I guessed that it might be related to the include path, so I tried to use CMake to recursively include all directories for compilation, but there were more errors that could not be fixed.
+
+![Screenshot.6](Pic/lab4-6.jpg "Screenshot.6")
+Screenshot.6
+
+> Compilation instructions:
+> - Emsctripten:
+>   - `emcc -lpthread -lwebsocket.js customer.cpp -o .\out\customer.html`
+> - server.js:
+>   - `node server.js`
+>   - `python -m http.server`
+> - Native C++ code :
+>   - `clang++ -g -lpthread -std=c++14 .\*.cpp -o .\out\customer`
+
+### ***[Download](https://github.com/Yvonhu/repo/tree/main/Lab4)***
+
+### ***Back to [Home](https://xinghuadong.github.io/blog.github.io/)***
