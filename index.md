@@ -1,6 +1,6 @@
 ## Welcome to GitHub Pages
 
-Here is [Lab1](https://github.com/XinghuaDong/blog.github.io/Lab1/)
+Here is [Lab1](https://xinghuadong.github.io/blog.github.io/Lab1/)
 
 You can use the [editor on GitHub](https://github.com/XinghuaDong/blog.github.io/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
