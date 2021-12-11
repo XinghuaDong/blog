@@ -28,6 +28,7 @@ corresponding name
 >- `mutable std::mutex m_tableMutex`; //lock
 > 
 >};
+>
 ---
 #### class Customer
 >{
@@ -53,7 +54,9 @@ corresponding name
 >- `mutable std::mutex m_customerMutex`; //lock
 >- `std::thread *m_thread = nullptr`; //thread object
 >- `float totalTips = 0`; //total tips paid
+>
 >};
+>
 ---
 #### class TipBox
 >{
@@ -77,7 +80,9 @@ corresponding name
 >    - Data type: float
 >- `static TipBox *s_tb`; //Static TipBox object
 >- `mutable std::mutex m_tipsMutex`; //lock
+>
 >};
+>
 ---
 #### class Order
 >{
@@ -189,16 +194,11 @@ Screenshot.6 Improved NodeJS execution time and confidence in Windows
 
 > Compilation instructions:
 >- Native C++ code :
->   - clang++ -pthread -std=c++14 *.cpp -o main
-Figure3.Improved NodeJS execution time and confidence in MacOS
-Figure4.Improved NodeJS execution time and confidence in Windows
+>   - `clang++ -pthread -std=c++14 *.cpp -o main`
 >- Emsctripten:
->   - emcc -std=c++14 -pthread -s PROXY_TO_PTHREAD -s
-ALLOW_MEMORY_GROWTH=1 -s NO_DISABLE_EXCEPTION_CATCHING -s
-LLD_REPORT_UNDEFINED -s ERROR_ON_UNDEFINED_SYMBOLS=1
-main.cpp Order.cpp Customer.cpp Table.cpp TipBox.cpp -o main.html
+>   - `emcc -std=c++14 -pthread -s PROXY_TO_PTHREAD -s ALLOW_MEMORY_GROWTH=1 -s  O_DISABLE_EXCEPTION_CATCHING -s LLD_REPORT_UNDEFINED -s ERROR_ON_UNDEFINED_SYMBOLS=1 main.cpp Order.cpp Customer.cpp Table.cpp TipBox.cpp -o main.html`
 >- NodeJS:
->   - node --experimental-wasm-threads main.js
+>   - `node --experimental-wasm-threads main.js`
 
 ### ***[Download](https://github.com/Yvonhu/repo/tree/main/Lab3)***
 

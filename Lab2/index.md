@@ -10,90 +10,95 @@
 >{
 >
 >***method:***
->- Table(int maxSize): constructor
+>- `Table(int maxSize)`: constructor
 >    - input parameter: represents the maximum number of dishes that can be stored.
->- addDish(): add a new dish to the Table.
+>- `addDish()`: add a new dish to the Table.
 >    - Return value type: void
 >    - input: none
 >    - output: none
->- takeDish(): Take away the first dish in Table.
+>- `takeDish()`: Take away the first dish in Table.
 >    - Return value type: bool
 >    - input: None
 >    - output: the status of dish was taken away.
->- empty(); Determine whether the number of dishes in the Table is 0
+>- `empty()`; Determine whether the number of dishes in the Table is 0
 >    - Return value type: bool
 >    - Input: none
 >    - Output: Is the quantity 0
->- printDishes(); Print the current situation of the dishes of the Table
+>- `printDishes()`; Print the current situation of the dishes of the Table
 >    - Return value: void
 >    - Input: none
 >    - Input: none
->- getDish(int index); returns the value of the dish at the specified position
+>- `getDish(int index)`; returns the value of the dish at the specified position
 >    - Return value type: int
 >    - Input: the location of the dish to be viewed
 >    - Output: the value of the dish at the corresponding position
 >
 >***Attributes:***
->- maxSize; Indicates the maximum capacity of the Table
+>- `maxSize`; Indicates the maximum capacity of the Table
 >    - Data type: int
->- count; Indicates the number (position) of the current dish of the Table
+>- `count`; Indicates the number (position) of the current dish of the Table
 >    - Data type: int
 > 
 >};
+>
 ---
 #### class Customer
 >{
 >    
 >***method:***
->- Customer(int maxCount); Constructor
+>- `Customer(int maxCount)`; Constructor
 >    - Input: indicates the maximum number of wanted
->- indexWanted(int e); returns the same wanted position as e
+>- `indexWanted(int e)`; returns the same wanted position as e
 >    - Return value type: int
 >    - Input: the value to be judged
 >    - Output: the position of the corresponding value (-1 means not found)
->- full(); Determine whether the number of customers wanted is 0
+>- `full()`; Determine whether the number of customers wanted is 0
 >    - Return value type: bool
 >    - Input: None
 >    - Output: Is the quantity 0
->- printWanted(); Print the wanted situation of the current Customer
+>- `printWanted()`; Print the wanted situation of the current Customer
 >    - Return value: void
 >    - Input: none
 >    - Output: none
->- getWanted(int index); returns the wanted value at the specified position
+>- `getWanted(int index)`; returns the wanted value at the specified position
 >    - Return value type: int
 >    - Input: the wanted location to be viewed
 >    - Output: the wanted value of the corresponding position
->- takeWanted(int index); remove wanted at the specified position
+>- `takeWanted(int index)`; remove wanted at the specified position
 >    - Return value type: bool
 >    - Input: the wanted location to be removed
 >    - Output: Boolean value of whether the removal was successful
 >
 >***Attributes:***
->- maxCount; Indicates the maximum capacity of Customer
+>- `maxCount`; Indicates the maximum capacity of Customer
 >    - Data type: int
->- size; indicates the number (position) of the customer currently wanted
+>- `size`; indicates the number (position) of the customer currently wanted
 >    - Data type: int
+> 
 >};
+>
 ---
 #### class TipBox
 >{
 >
 >***method:***
->- TipBox(); Constructor
+>- `TipBox()`; Constructor
 >    - Input: None
->- payTips(float tips); put tips into TipBox
+>- `payTips(float tips)`; put tips into TipBox
 >    - Return value: None
 >    - Input: the value of tips that needs to be put in TipBox
 >    - Output: none
->- getTips(); Get the total amount of current tips in TipBox
+>- `getTips()`; Get the total amount of current tips in TipBox
 >    - Return value type: float
 >    - Input: None
 >    - Output: the total amount of tips in TipBox
 > 
 >***Attributes:***
->- total; Indicates the total amount of tips in the current TipBox
+>- `total`; Indicates the total amount of tips in the current TipBox
 >    - Data type: float
+> 
 >};
+>
 ---
 #### Description of the classes
 - For the Table class, it represents a table with a certain number of dishes, so it needs to contain the maximum number of dishes that can hold, the current number of dishes, and the content variables of the dishes (randomly generated during construction).
@@ -108,17 +113,17 @@ at least one of Table or Customer is empty.
 
 ### UML
 
-| Table                   | Customer                    | TipBox                    |
-| ----------------------- | --------------------------- | ------------------------- |
-| Table(int maxSize)      | Customer(int maxCount)      | TipBox()                  |
-| addDish(): void         | indexWanted(int e): int     | payTips(float tips): void |
-| takeDish(): bool        | full(): bool                | getTips(): float          |
-| empty(): bool           | printWanted(): void         |                           |
-| printDishes(): void     | getWanted(int index): int   |                           |
-| getDish(int index): int | takeWanted(int index): bool |                           |
-|                         |                             |                           |
-| maxSize: int            | maxCount: int               | total: float              |
-| count: int              | size: int                   |                           |
+| Table                     | Customer                      | TipBox                      |
+| ------------------------- | ----------------------------- | --------------------------- |
+| `Table(int maxSize)`      | `Customer(int maxCount)`      | `TipBox()`                  |
+| `addDish()`: void         | `indexWanted(int e)`: int     | `payTips(float tips)`: void |
+| `takeDish()`: bool        | `full()`: bool                | `getTips()`: float          |
+| `empty()`: bool           | `printWanted()`: void         |                             |
+| `printDishes()`: void     | `getWanted(int index)`: int   |                             |
+| `getDish(int index)`: int | `takeWanted(int index)`: bool |                             |
+|                           |                               |                             |
+| `maxSize`: int            | `maxCount`: int               | `total`: float              |
+| `count`: int              | `size`: int                   |                             |
 
 ### Compare and Contrast execution time of the library code between demo application and comparison application
 #### The native comparison application execution time

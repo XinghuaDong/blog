@@ -12,14 +12,14 @@
 Screenshot.1
 
 #### Commands used in the screenshot.1:
-- git- -version
-- python3
-- Git clone https://emscripten.org/docs/getting_started/downloads.html.git
-- cd emsdk
-- git pull
-- ./emsdk install latest
-- ./emsdk activate latest
-- Source”MY PATH/emsdk_env.sh”
+- `git --version`
+- `python3`
+- `Git clone https://emscripten.org/docs/getting_started/downloads.html.git`
+- `cd emsdk`
+- `git pull`
+- `./emsdk install latest`
+- `./emsdk activate latest`
+- `Source "MY PATH/emsdk_env.sh"`
 
 ![Screenshot.2](Pic/lab1-2.jpg "Screenshot.2")
 Screenshot.2
@@ -29,11 +29,12 @@ Screenshot.3
 
 #### Verify with hello_world.cpp
 #### Commands used in the screenshot.2&3:
-- emcc hello_world.c -o hello.html
-- Node hello.js (Clearly print out “Hello World!” in terminal.)
-- Python3 -m http.server
-- (Open browser then type in localhost:8000)
-- Open the hello.html (We can Clearly see the “Hello World!” in bowser. )
+- `emcc hello_world.c -o hello.html`
+- `Node hello.js (Clearly print out "Hello World!" in terminal.)`
+- `Python3 -m http.server`
+  - (Open browser then type in localhost:8000)
+- Open the hello.html
+  - (We can Clearly see the "Hello World!" in bowser. )
 
 ### Compare and Contrast execution time between native and wasm based code vases.
 
@@ -44,7 +45,7 @@ Screenshot.3
 Screenshot.4
 
 - Next, we open the emcc-compiled Quick_Sort.html file in the browser and save the output in Browser_output.txt. (Here I found that the browser's time precision is not accurate to microseconds, so I tried to change the status of "privacy.reduceTimerPrecision" to "False", but the problem is still not solved. This will affect the average of the runtime, and thus the confidence interval calculation of the runtime on the browser side.
-- In the third step, for convenience, I wrote a python-based code for running time analysis and confidence interval calculation, named "Confidence Interval.py”. I used this code to read the output of the native code "output.txt" and the output of the browser code "Browser_output.txt" respectively. The corresponding results about the two codes are shown in the following two figure.
+- In the third step, for convenience, I wrote a python-based code for running time analysis and confidence interval calculation, named "Confidence Interval.py". I used this code to read the output of the native code "output.txt" and the output of the browser code "Browser_output.txt" respectively. The corresponding results about the two codes are shown in the following two figure.
 
 ![Screenshot.5](Pic/lab1-5.jpg "Screenshot.5")
 Screenshot.5

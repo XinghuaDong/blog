@@ -33,6 +33,7 @@
 >- `EM_BOOL WebSocketMessage(int eventType, const EmscriptenWebSocketMessageEvent *e, void *userData)`
 >    - Callback function for the socket to receive a message, to determine the content of the message - and
 >    - perform logical processing.
+> 
 ---
 #### client.js
 >- `const url`
@@ -71,6 +72,7 @@
 >    - Loop through delivery messages when the socket is open and send them out
 >- `worker`
 >    - When the order list is not empty, loop to generate a delivery to the corresponding customer
+> 
 ---
 #### server.js
 >- `const WebSocket = require('ws')`
@@ -88,6 +90,7 @@
 >    - record if the client is active
 >- `pulse`
 >    - send heartbeat messages cyclically to determine if the client is active
+> 
 ---
 #### Description of the application design and classes
 - The main function of the application we designed is to simulate the whole process of ordering and delivering food to customers. The function of the app on the web side is to receive orders from customers and deliver the dishes to the specified customers, and the current customer ends the disconnection when the customer's desired dish is finished. When the page is open, the application will keep running, and the server will broadcast and web html update information when the customer enters, leaves, and receives the dishes.
