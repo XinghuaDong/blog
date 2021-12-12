@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="@regmtait">
+  <link rel=icon href="/theme-assets/favicon.svg" sizes="any" type="image/svg+xml">
+  <title>Welcome to Lab5! • Toasty Jekyll</title>
+  <meta name="description" content="Here is the report of Lab5">
+  <meta name="keywords" content="Toasty Jekyll">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet"> 
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3U7uwIvCyq01orxppAIC1v73y-FBGygY&callback=initMap"
+    async defer></script>
+
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('google-map'), {
+          center: {lat: 53.7530398, lng: -0.3682561},
+          zoom: 17,
+        });
+
+        var pointer = "/theme-assets/map-pointer.svg";
+
+        var marker = new google.maps.Marker({
+          position: map.getCenter(),
+          icon: pointer,
+          map: map
+        });
+
+      }
+    </script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/report/2021/12/12/Lab5.html">
+  <link rel="alternate" type="application/rss+xml" title="Toasty Jekyll" href="http://localhost:4000/feed.xml">
+
+</head>
+
+<body class="">
+
+<header class="site-header cf">
+
+<div class="wrapper">
+	<nav class="site-nav">
+		<a class="logo" href="/" title="Toasty Jekyll home page">
+		<img class="nav-logo" src="/theme-assets/logo.svg" title="Toasty Jekyll logo" /></a>
+		<ul>
+  			<li data-wenk="Some news" data-wenk-pos="bottom" class="news"><a title="News" class="page-link" href="/news/">News</a></li>
+  			<li data-wenk="Successful case studies" data-wenk-pos="bottom" class="case-studies"><a title="Case studies" class="page-link" href="/case-studies/">Case studies</a></li>
+  			<li data-wenk="Some resources" data-wenk-pos="bottom" class="resources"><a title="Resources" class="page-link" href="/resources/">Resources</a></li>
+  			<li data-wenk="Contact details" data-wenk-pos="bottom" class="contact"><a title="Contact" class="page-link" href="/contact/">Contact</a></li>
+		</ul>
+	</nav>
+</div>
+
+</header>
+
+<div class="page-content">
+ <div class="wrapper">
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+<header class="post-header">
+<h1 class="post-title" itemprop="name headline">Welcome to Lab5!</h1>
+<p class="post-meta"><time datetime="2021-12-12T16:11:33+08:00" itemprop="datePublished">Dec 12, 2021</time></p>
+</header>
+
+<div class="post-content" itemprop="articleBody">
+<p class="article-summary">Here is the report of Lab5</p>
+
+<h3 id="back-to-home"><strong><em>Back to <a href="/">Home</a></em></strong></h3>
+
+<h3 id="download"><strong><em><a href="https://github.com/Yvonhu/repo/tree/main/Lab5">Download</a></em></strong></h3>
+
+<h3 id="the-all-steps-to-get-emscripten-development-environment-working">The all steps to get Emscripten development environment working.</h3>
+
+<h4 id="clone-electron_quick_start-to-the-local-folder-from-a-remote-location">Clone electron_quick_start to the local folder from a remote location.</h4>
+
+<p><img src="/Pic/lab5-1.jpg" alt="Screenshot.1" title="Screenshot.1" />
+Screenshot.1</p>
+<blockquote>
+  <ul>
+    <li>Commands used in the screenshot.1:
+      <ul>
+        <li><code class="highlighter-rouge">Git clone https://emscripten.org/docs/getting_started/downloads.html.git</code></li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<h4 id="go-to-the-electron_quick_start-folder-in-your-local-terminal-and-install-the-modules">Go to the electron_quick_start folder in your local terminal and install the modules.</h4>
+
+<p><img src="/Pic/lab5-2.jpg" alt="Screenshot.2" title="Screenshot.2" />
+Screenshot.2</p>
+<blockquote>
+  <ul>
+    <li>Commands used in the screenshot.2:
+      <ul>
+        <li><code class="highlighter-rouge">Cd electron-quick-start</code></li>
+        <li><code class="highlighter-rouge">Npm install</code></li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<h4 id="test-hello-world">Test Hello World!</h4>
+
+<p><img src="/Pic/lab5-3.jpg" alt="Screenshot.3" title="Screenshot.3" />
+Screenshot.3</p>
+
+<p><img src="/Pic/lab5-4.jpg" alt="Screenshot.4" title="Screenshot.4" />
+Screenshot.4</p>
+<blockquote>
+  <ul>
+    <li>Commands used in the screenshot.3&amp;4:
+      <ul>
+        <li><code class="highlighter-rouge">Npm start</code></li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<h3 id="compile-source-code">Compile source code.</h3>
+<h4 id="compile-the-native-c-source-code-in-the-terminal-using-emcc">Compile the native C++ source code in the terminal using emcc.</h4>
+
+<p><img src="/Pic/lab5-5.jpg" alt="Screenshot.5" title="Screenshot.5" />
+Screenshot.5</p>
+<blockquote>
+  <ul>
+    <li>Commands used in the screenshot.5:
+      <ul>
+        <li><code class="highlighter-rouge">emcc -std=c++14 -pthread -s PROXY_TO_PTHREAD -s ALLOW_MEMORY_GROWTH=1 -s NO_DISABLE_EXCEPTION_CATCHING -s LLD_REPORT_UNDEFINED -s ERROR_ON_UNDEFINED_SYMBOLS=1 main.cpp Order.cpp Customer.cpp Table.cpp TipBox.cpp -o output.js</code></li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<h4 id="copy-the-generated-wasm-file-and-js-file-to-the-electron-quick-start-folder">Copy the generated .wasm file and .js file to the electron-quick-start folder.</h4>
+<hr />
+<h4 id="edit-indexhtml-and-mainjs-on-top-of-the-original-one-and-create-tablejs-as-a-new-feature-whose-function-is-to-save-all-the-performance-data-inside-the-final-generated-app">Edit index.html and main.js on top of the original one, and create table.js as a new feature, whose function is to save all the performance data inside the final generated app</h4>
+<hr />
+<h4 id="execute-npm-start-to-test-the-final-local-app-generated-by-the-electron-method">Execute npm start to test the final local app generated by the electron method.</h4>
+
+<p><img src="/Pic/lab5-6.jpg" alt="Screenshot.6" title="Screenshot.6" />
+Screenshot.6</p>
+
+<h4 id="as-shown-in-screenshoot6-the-save-current-output-file-button-is-added-to-the-newly-created-feature-and-we-finally-test-the-performance-of-the-feature">As shown in screenshoot6, the “save current output file” button is added to the newly created feature, and we finally test the performance of the feature.</h4>
+
+<p><img src="/Pic/lab5-7.jpg" alt="Screenshot.7" title="Screenshot.7" />
+Screenshot.7</p>
+
+<h3 id="download-1"><strong><em><a href="https://github.com/Yvonhu/repo/tree/main/Lab5">Download</a></em></strong></h3>
+
+<h3 id="back-to-home-1"><strong><em>Back to <a href="/">Home</a></em></strong></h3>
+
+</div>
+
+<a class="back-button" href="/news/" title="Other stories">&larr; Other stories</a>
+
+</article>
+</div><!-- end wrapper -->
+
+</div>
+
+<footer class="site-footer cf">
+<div class="wrapper">
+
+<ul>
+<li>Email: <a href="mailto:regmtait@gmail.com" title="Email us">regmtait@gmail.com</a> • <a href="https://github.com/regmtait/Toasty-Jekyll" title="Download from GitHub">Download</a> site source</li>
+</ul>
+
+</div>
+</footer>
+
+</body>
+
+</html>
