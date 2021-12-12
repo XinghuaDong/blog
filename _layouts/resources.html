@@ -32,7 +32,7 @@ layout: default
 {% else %}
 <h2><a title="{{ resource.title }} details" href="{{ resource.url }}">{{ resource.title }}</a></h2>
 <p>{{ resource.summary }}</p>
-<a href="{{ site.baseurl }}{{ resource.url }}" class="read-more-button" title="{{ resource.title }} details">More details</a>
+<a href="{{ site.baseurl }}/{{ resource.url }}" class="read-more-button" title="{{ resource.title }} details">More details</a>
 {% endif %}
 </div>
 {% endfor %}
