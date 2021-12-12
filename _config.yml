@@ -5,3 +5,9 @@ collections:
 
 name: Jekyll • 简单静态博客网站生成器
 description: 将纯文本转换为静态博客网站
+url: http://jekyllcn.com
+
+twitter:
+  username: jekyllrb
+
+logo: img/logo-2x.png
