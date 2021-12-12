@@ -12,7 +12,7 @@ layout: default
 
 <div class="post-content">
 {% if page.summary %}<p class="article-summary">{{ page.summary }}</p>{% endif %}
-{% if page.main-pic %}<img src="/{{ site.theme-path }}/case-studies/{{ page.main-pic }}" alt="{{ page.title }}" class="feature-image"/>{% endif %}
+{% if page.main-pic %}<img src="/{{ site.baseurl }}{{ site.theme-path }}/case-studies/{{ page.main-pic }}" alt="{{ page.title }}" class="feature-image"/>{% endif %}
 
 {{ content }}
 </div>
