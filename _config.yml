@@ -1,1 +1,7 @@
 theme: jekyll-theme-cayman
+collections:
+  docs:
+    output: true
+
+name: Jekyll • 简单静态博客网站生成器
+description: 将纯文本转换为静态博客网站
