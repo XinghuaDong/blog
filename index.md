@@ -1,14 +1,14 @@
 ## Welcome to GitHub Pages
 
-### ***Here is [Lab1](https://xinghuadong.github.io/blog.github.io/Lab1/)***
+### ***Here is [Lab1](./Lab1/)***
 
-### ***Here is [Lab2](https://xinghuadong.github.io/blog.github.io/Lab2/)***
+### ***Here is [Lab2](./Lab2/)***
 
-### ***Here is [Lab3](https://xinghuadong.github.io/blog.github.io/Lab3/)***
+### ***Here is [Lab3](./Lab3/)***
 
-### ***Here is [Lab4](https://xinghuadong.github.io/blog.github.io/Lab4/)***
+### ***Here is [Lab4](./Lab4/)***
 
-### ***Here is [Lab5](https://xinghuadong.github.io/blog.github.io/Lab5/)***
+### ***Here is [Lab5](./Lab5/)***
 
 You can use the [editor on GitHub](https://github.com/XinghuaDong/blog.github.io/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 

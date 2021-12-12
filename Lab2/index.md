@@ -1,6 +1,6 @@
 ## Welcome to GitHub Pages (Lab2)
 
-### ***Back to [Home](https://xinghuadong.github.io/blog.github.io/)***
+### ***Back to [Home](../)***
 
 ### ***[Download](https://github.com/Yvonhu/repo/tree/main/Lab2)***
 
@@ -173,4 +173,4 @@ Screenshot.6 Web execution time and confidence interval after improving
 
 ### ***[Download](https://github.com/Yvonhu/repo/tree/main/Lab2)***
 
-### ***Back to [Home](https://xinghuadong.github.io/blog.github.io/)***
+### ***Back to [Home](../)***

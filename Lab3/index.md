@@ -1,6 +1,6 @@
 ## Welcome to GitHub Pages (Lab3)
 
-### ***Back to [Home](https://xinghuadong.github.io/blog.github.io/)***
+### ***Back to [Home](../)***
 
 ### ***[Download](https://github.com/Yvonhu/repo/tree/main/Lab3)***
 
@@ -206,4 +206,4 @@ Screenshot.6 Improved NodeJS execution time and confidence in Windows
 
 ### ***[Download](https://github.com/Yvonhu/repo/tree/main/Lab3)***
 
-### ***Back to [Home](https://xinghuadong.github.io/blog.github.io/)***
+### ***Back to [Home](../)***

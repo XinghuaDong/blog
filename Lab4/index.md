@@ -1,6 +1,6 @@
 ## Welcome to GitHub Pages (Lab4)
 
-### ***Back to [Home](https://xinghuadong.github.io/blog.github.io/)***
+### ***Back to [Home](../)***
 
 ### ***[Download](https://github.com/Yvonhu/repo/tree/main/Lab4)***
 
@@ -185,4 +185,4 @@ Screenshot.6
 
 ### ***[Download](https://github.com/Yvonhu/repo/tree/main/Lab4)***
 
-### ***Back to [Home](https://xinghuadong.github.io/blog.github.io/)***
+### ***Back to [Home](../)***

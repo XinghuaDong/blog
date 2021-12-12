@@ -1,6 +1,6 @@
 ## Welcome to GitHub Pages (Lab5)
 
-### ***Back to [Home](https://xinghuadong.github.io/blog.github.io/)***
+### ***Back to [Home](../)***
 
 ### ***[Download](https://github.com/Yvonhu/repo/tree/main/Lab5)***
 
@@ -55,4 +55,4 @@ Screenshot.7
 
 ### ***[Download](https://github.com/Yvonhu/repo/tree/main/Lab5)***
 
-### ***Back to [Home](https://xinghuadong.github.io/blog.github.io/)***
+### ***Back to [Home](../)***
